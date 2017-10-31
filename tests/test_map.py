@@ -1,5 +1,5 @@
 import unittest
-from map import Map
+from models.map import Map
 from test_helper import get_str_map, get_map, get_2x2_map
 
 class TestMap(unittest.TestCase):

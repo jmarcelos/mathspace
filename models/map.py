@@ -30,6 +30,20 @@ class Map:
             return self.MAX_COST
         return self.grid[position_x][position_y]
 
+    def get_neighbours(self, position_x, position_y):
+        
+        neighbours = []
+        if self.is_inside_grid(position_x+1, position_y):
+            neighbours.append(((position_x+1, position_y), 'D'))
+        if self.is_inside_grid(position_x-1, position_y):
+            neighbours.append(((position_x-1, position_y), 'U'))
+        if self.is_inside_grid(position_x, position_y+1):
+            neighbours.append(((position_x, position_y+1), 'R'))
+        if self.is_inside_grid(position_x, position_y-1):
+            neighbours.append(((position_x, position_y-1), 'L'))
+
+        return neighbours
+
     def is_inside_grid(self, position_x, position_y):
 
         if position_x < self.start_x or position_x > self.end_x:
