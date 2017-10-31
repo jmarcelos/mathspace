@@ -17,11 +17,15 @@ R,R,D,D,R,D,D,R,R,D
 
 At first, I have implemented a recursive approach with the options U,D,R and L. The problem with this approach is the memory footprint to calculate all possibilities(combinations)!!! This approach works fine in the sample input if you only work with R,D once you add more combinations the time take to solve is huge.
 
-My second approach was a prune search, which I have deleted, at this stage, decided to keep track of my calculations. Once I found a path, I stored the result and keep executing the backtracking, now, if my total cost is bigger than the previous found I would abort. This approach was faster, but not enough, his Big O was combinatorial.
+My second approach was a prune search, which I have deleted, at this stage, I decided to keep track of my calculations. Once I found a path, I stored the result and keep executing the backtracking, now, if my total cost is bigger than the previous found I would abort. This approach was faster, but not enough, his Big O was combinatorial.
 
-After that I realised that dynamic programming could be a solution, but did not found a way to store previous solutions since the I needed a previous computation that was expecting the value from the calculated one.
+After that I realised that dynamic programming could be a solution, but did not find a way to store previous solutions since the I needed a previous computation that was expecting the value from the calculated one.
 
-Finally, I decided to implemented Dijsktra, I was not sure if would work since I could end up in a cycle that was excluded because I keep track of my min cost at each navigation. That implementation is n^2 :)
+Finally, I decided to implemented Dijsktra, I was not sure if would work since I could end up in a cycle, that was excluded because I keep track of my min cost at each navigation. That implementation is n^2 :)
+
+Although I was able to implement tests to test the UP, DOWN, RIGHT, LEFT, I found a bug in some cases!! Running the unit test you are going to see that.
+
+My effort was 8 hours in this challenge,
 
 ### Code organization
 Map - class that contain the map implementation, knowing the grid, this class is capable of provideding the following information:
@@ -33,7 +37,7 @@ Robot - class that contains the robot implementaion, when you create a robot you
  - retrieve the optimal route, the most cheaper route to achive the destiny
  - the robot can calculate the cheapest route from any to points in the map
 
-Naive, Optimal - these are the algorithm implementations for the robot, which is based on the Strategy Pattern to hide the complexity from the "user"
+Naive, Optimal - these are the algorithm implementations for the robot, which hides the complexity from the "robot"
 
 ### Instalation
 To run the code you only needs Python 2 or 3.
@@ -47,8 +51,5 @@ $ make run
 ```
 ** A file can be provided, similar to my_grid.txt to calculate based on diferent grid
 ```sh
-$ make run
+$ make run filename=mygrid.txt
 ``` 
-
- 
-

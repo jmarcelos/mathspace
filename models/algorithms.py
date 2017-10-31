@@ -16,11 +16,11 @@ class OptimalImplementation:
 
     def get_min_cost_path(self, start_x, start_y):
 
-        value = self.find_least_cost_path(start_x, start_y)
+        value = self._find_least_cost_path(start_x, start_y)
         return (value[0], (value[1]))
         
 
-    def find_least_cost_path(self, start_x, start_y):
+    def _find_least_cost_path(self, start_x, start_y):
 
         grid = self.maps.grid
         size = len(grid)
@@ -47,9 +47,10 @@ class OptimalImplementation:
                     is_set = True
                     path.append(direction)
                     self.total_cost[next_x][next_y] = (new_total, path) 
+                    
                     queue.append((next_x, next_y))
 
-        return self.total_cost[size-1][size-1] 
+        return self.total_cost[self.end_x][self.end_y] 
 
 class NaiveImplementation:
 

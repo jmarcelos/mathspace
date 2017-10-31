@@ -63,3 +63,12 @@ class Map:
         #assuming a square grid
         if round(size_matrix) != size_matrix:
             raise ValueError("Invalid map generation")
+    
+    def __repr__(self):
+        
+        string = "Map\n"
+        if self.grid:
+            for line in self.grid:
+                string += " ".join([str(x) for x in line])
+                string += "\n"
+        return  string   
